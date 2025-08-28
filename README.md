@@ -29,3 +29,29 @@ Clone the repo and install dependencies:
 git clone https://github.com/your-username/SnapLink.git
 cd SnapLink
 npm install
+
+Run the development server:
+
+npm run dev
+
+
+Now open 👉 http://localhost:3000
+
+🌍 Deployment
+
+Easily deploy with Vercel
+ or Netlify
+.
+
+vercel
+
+🤝 Contributing
+
+Contributions are welcome!<br>
+Please fork this repo and submit a pull request.
+
+📜 License
+
+This project is licensed under the MIT License.
+
+✨ Built with ❤️ and 🔗 by YourName
