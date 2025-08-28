@@ -54,4 +54,4 @@ Please fork this repo and submit a pull request.
 
 This project is licensed under the MIT License.
 
-✨ Built with ❤️ and 🔗 by YourName
+✨ Built with ❤️ and 🔗 by Himanshu
