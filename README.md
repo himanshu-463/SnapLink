@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🔗 SnapLink
+SnapLink is a fast and reliable **URL shortener** that turns long, messy links into short, shareable ones.<br>
+Simple, secure, and perfect for personal or business use. 🚀  
 
-## Getting Started
+---
 
-First, run the development server:
+## ✨ Features
+- ⚡ Instantly shorten long URLs  
+- 🔑 Unique short link generation  
+- 📊 (Optional) Analytics for link tracking  
+- 📱 Responsive and modern UI  
+- 🔒 Secure & user-friendly  
+
+---
+
+## 🛠️ Tech Stack
+- ⚛️ **React / Next.js** (Frontend & Routing)<br>
+- 🎨 **Tailwind CSS** (Styling)<br>
+- 🗄️ **MongoDB / PostgreSQL** (Database)<br>
+- 🖥️ **Node.js / Express** (Backend API)<br>
+- 🚀 **Vercel / Netlify / Render** (Deployment)<br>
+
+---
+
+## 📦 Installation
+Clone the repo and install dependencies:  
 
 ```bash
+git clone https://github.com/your-username/SnapLink.git
+cd SnapLink
+npm install
+
+Run the development server:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Now open 👉 http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🌍 Deployment
 
-## Learn More
+Easily deploy with Vercel
+ or Netlify
+.
 
-To learn more about Next.js, take a look at the following resources:
+vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🤝 Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Contributions are welcome!<br>
+Please fork this repo and submit a pull request.
 
-## Deploy on Vercel
+📜 License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is licensed under the MIT License.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+✨ Built with ❤️ and 🔗 by Himanshu
