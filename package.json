@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "mongodb": "^6.18.0",
+    "mongoose": "^8.18.0",
     "next": "15.4.6",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "typed.js": "^2.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

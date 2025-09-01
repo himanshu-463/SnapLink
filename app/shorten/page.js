@@ -37,13 +37,14 @@ const Shorten = () => {
   };
 
   return (
-    <div className="mx-auto max-w-lg bg-purple-100 my-16 p-8 rounded-lg flex flex-col gap-4">
+    <div className="mx-auto max-w-lg bg-purple-100 my-40 p-8 rounded-lg flex flex-col gap-4">
       <h1 className="font-bold text-2xl">Generate your short URLs</h1>
       <div className="flex flex-col gap-2">
         <input
           type="text"
           value={url}
-          className="px-4 py-2 bg-white focus:outline-purple-600 rounded-md"
+          className="px-4 py-2 bg-white focus:outline-purple-600 rounded-md      
+             hover:transform transition duration-300 hover:scale-105"
           placeholder="Enter your long URL here"
           onChange={(e) => {
             seturl(e.target.value);
@@ -52,7 +53,7 @@ const Shorten = () => {
         <input
           type="text"
           value={shorturl}
-          className="px-4 py-2 bg-white focus:outline-purple-600 rounded-md"
+          className="px-4 py-2 bg-white focus:outline-purple-600 rounded-md hover:transform transition duration-300 hover:scale-105"
           placeholder="Enter your preferred short URL text"
           onChange={(e) => {
             setshorturl(e.target.value);
