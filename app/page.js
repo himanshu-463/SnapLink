@@ -14,8 +14,8 @@ export default function Home() {
   return (
     <main className="">
       <section className="flex h-[50vh] my-50">
-        <div className=" flex flex-col gap-4 items-start mx-40 justify-center">
-          <p className={`text-3xl font-bold ${poppins.className} `}>
+        <div className=" flex flex-col gap-4 items-start ml-4 sm:mx-40 justify-center">
+          <p className={` text-xl sm:text-3xl font-bold ${poppins.className} `}>
             The Best URL Shortener in the Market
           </p>
           <p className="my-3">
@@ -43,9 +43,9 @@ export default function Home() {
             </a>
           </li>
         </div>
-        <div className="flex justify-start relative">
+        <div className="hidden sm:flex sm:justify-start sm:relative">
           <Image
-            className="mix-blend-darken"
+            className="mix-blend-darken "
             alt="an Image of a vector"
             src={"/vector.jpg"}
             height={500}
