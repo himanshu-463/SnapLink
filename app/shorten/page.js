@@ -8,33 +8,67 @@ const Shorten = () => {
   const [shorturl, setshorturl] = useState("");
   const [generated, setGenerated] = useState("");
 
-  const generate = () => {
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+  // const generate = async () => {
 
-    const raw = JSON.stringify({
-      "url": url,
-      "shorturl": shorturl,
+  //   const myHeaders = new Headers();
+  //   myHeaders.append("Content-Type", "application/json");
+
+  //   const raw = JSON.stringify({
+  //     "url": url,
+  //     "shorturl": shorturl,
+  //   });
+
+  //   const requestOptions = {
+  //     method: "POST",
+  //     headers: myHeaders,
+  //     body: raw,
+  //     redirect: "follow",
+  //   };
+
+  //   fetch("/api/generate", requestOptions)
+  //     .then((response) => response.json())
+  //     .then((result) => {
+  //       setGenerated(`${process.env.NEXT_PUBLIC_HOST}/${shorturl}`);
+  //       seturl("");
+  //       setshorturl("");
+  //       console.log(result);
+  //       alert(result.message);
+  //     })
+  //     .catch((error) => console.error(error));
+  // };
+
+
+  const generate = async () => {
+  try {
+    const res = await fetch("/api/generate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url, shorturl }),
     });
 
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
+    let data;
+    try {
+      data = await res.json();
+    } catch {
+      throw new Error("Server did not return valid JSON");
+    }
 
-    fetch("/api/generate", requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        setGenerated(`${process.env.NEXT_PUBLIC_HOST}/${shorturl}`);
-        seturl("");
-        setshorturl("");
-        console.log(result);
-        alert(result.message);
-      })
-      .catch((error) => console.error(error));
-  };
+    if (!res.ok) {
+      throw new Error(data.message || "Server error");
+    }
+
+    // ✅ use backend response instead of trusting shorturl blindly
+    setGenerated(`${process.env.NEXT_PUBLIC_HOST}/${data.shorturl || shorturl}`);
+    seturl("");
+    setshorturl("");
+    console.log("Result:", data);
+    alert(data.message || "Short link created!");
+  } catch (err) {
+    console.error("Request failed:", err);
+    alert(err.message);
+  }
+};
+
 
   return (
     <div className="mx-auto max-w-lg bg-purple-100 ml-4 md:ml-125 mr-4 md:mr-0 my-40 p-8 rounded-lg flex flex-col gap-4">
