@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "SnapLink - A Link Shortener",
   description: "SnapLink is a link shortener that allows you to create short links easily.",
+   icons: {
+    icon: "/favicon.ico", // or PNG/SVG path
+  },
 };
 
 export default function RootLayout({ children }) {

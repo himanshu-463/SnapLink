@@ -1,5 +1,9 @@
-"use client";
 import React from "react";
+
+export const metadata = {
+  title: "About - SnapLink",
+  description: "Learn more about SnapLink and how it helps you shorten links easily.",
+};
 
 const about = () => {
   return (
@@ -117,3 +121,5 @@ npm run dev`}
 };
 
 export default about;
+
+

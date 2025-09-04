@@ -36,6 +36,7 @@ export async function POST(request) {
     const body = await request.json();
     const { url, shorturl } = body;
 
+    // Validate inputs
     if (!url || !shorturl) {
       return Response.json(
         { success: false, error: true, message: "Missing url or shorturl" },
@@ -47,7 +48,7 @@ export async function POST(request) {
     const db = client.db("snaplink");
     const collection = db.collection("url");
 
-    // Check if short URL already exists
+    // Check if shorturl already exists
     const existing = await collection.findOne({ shorturl });
     if (existing) {
       return Response.json(
@@ -56,11 +57,16 @@ export async function POST(request) {
       );
     }
 
-    // Insert new short URL
+    // Insert new document
     await collection.insertOne({ url, shorturl });
 
     return Response.json(
-      { success: true, error: false, message: "URL Generated Successfully", shorturl },
+      {
+        success: true,
+        error: false,
+        message: "URL Generated Successfully",
+        shorturl,
+      },
       { status: 201 }
     );
   } catch (err) {
