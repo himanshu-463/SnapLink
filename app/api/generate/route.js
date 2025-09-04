@@ -1,72 +1,72 @@
-// import clientPromise from "@/lib/mongodb";
-
-// export async function POST(request) {
-
-//     const body = await request.json();
-//     const client = await clientPromise;
-//     const db = client.db("snaplink");
-//     const collection = db.collection("url");
-
-//     //check if the URL already exists
-//     const doc = await collection.findOne({ shorturl: body.shorturl });
-//     if (doc) {
-//         return Response.json({
-//             success: false,
-//             error: true,
-//             message: "URL already exists",
-//         });
-//     }
-
-//     const result = await collection.insertOne({
-//         url: body.url,
-//         shorturl: body.shorturl,
-//     });
-
-//     return Response.json({
-//         success: true,
-//         error: false,
-//         message: "URL Generated Successfully",
-//     });
-// }
-
 import clientPromise from "@/lib/mongodb";
-import { NextResponse } from "next/server";
 
 export async function POST(request) {
-  try {
+
     const body = await request.json();
-    const { url, shorturl } = body;
-
-    if (!url || !shorturl) {
-      return NextResponse.json(
-        { success: false, error: true, message: "Missing url or shorturl" },
-        { status: 400 }
-      );
-    }
-
     const client = await clientPromise;
     const db = client.db("snaplink");
     const collection = db.collection("url");
 
-    const existing = await collection.findOne({ shorturl });
-    if (existing) {
-      return NextResponse.json(
-        { success: false, error: true, message: "URL already exists" },
-        { status: 409 }
-      );
+    //check if the URL already exists
+    const doc = await collection.findOne({ shorturl: body.shorturl });
+    if (doc) {
+        return Response.json({
+            success: false,
+            error: true,
+            message: "URL already exists",
+        });
     }
 
-    await collection.insertOne({ url, shorturl });
+    const result = await collection.insertOne({
+        url: body.url,
+        shorturl: body.shorturl,
+    });
 
-    return NextResponse.json(
-      { success: true, error: false, message: "URL Generated Successfully", shorturl },
-      { status: 201 }
-    );
-  } catch (err) {
-    console.error("API Error:", err);
-    return NextResponse.json(
-      { success: false, error: true, message: "Internal Server Error" },
-      { status: 500 }
-    );
-  }
+    return Response.json({
+        success: true,
+        error: false,
+        message: "URL Generated Successfully",
+    });
 }
+
+// import clientPromise from "@/lib/mongodb";
+// import { NextResponse } from "next/server";
+
+// export async function POST(request) {
+//   try {
+//     const body = await request.json();
+//     const { url, shorturl } = body;
+
+//     if (!url || !shorturl) {
+//       return NextResponse.json(
+//         { success: false, error: true, message: "Missing url or shorturl" },
+//         { status: 400 }
+//       );
+//     }
+
+//     const client = await clientPromise;
+//     const db = client.db("snaplink");
+//     const collection = db.collection("url");
+
+//     const existing = await collection.findOne({ shorturl });
+//     if (existing) {
+//       return NextResponse.json(
+//         { success: false, error: true, message: "URL already exists" },
+//         { status: 409 }
+//       );
+//     }
+
+//     await collection.insertOne({ url, shorturl });
+
+//     return NextResponse.json(
+//       { success: true, error: false, message: "URL Generated Successfully", shorturl },
+//       { status: 201 }
+//     );
+//   } catch (err) {
+//     console.error("API Error:", err);
+//     return NextResponse.json(
+//       { success: false, error: true, message: "Internal Server Error" },
+//       { status: 500 }
+//     );
+//   }
+// }
