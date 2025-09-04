@@ -30,15 +30,15 @@
 // }
 
 import clientPromise from "@/lib/mongodb";
+import { NextResponse } from "next/server";
 
 export async function POST(request) {
   try {
     const body = await request.json();
     const { url, shorturl } = body;
 
-    // Validate inputs
     if (!url || !shorturl) {
-      return Response.json(
+      return NextResponse.json(
         { success: false, error: true, message: "Missing url or shorturl" },
         { status: 400 }
       );
@@ -48,30 +48,23 @@ export async function POST(request) {
     const db = client.db("snaplink");
     const collection = db.collection("url");
 
-    // Check if shorturl already exists
     const existing = await collection.findOne({ shorturl });
     if (existing) {
-      return Response.json(
+      return NextResponse.json(
         { success: false, error: true, message: "URL already exists" },
         { status: 409 }
       );
     }
 
-    // Insert new document
     await collection.insertOne({ url, shorturl });
 
-    return Response.json(
-      {
-        success: true,
-        error: false,
-        message: "URL Generated Successfully",
-        shorturl,
-      },
+    return NextResponse.json(
+      { success: true, error: false, message: "URL Generated Successfully", shorturl },
       { status: 201 }
     );
   } catch (err) {
     console.error("API Error:", err);
-    return Response.json(
+    return NextResponse.json(
       { success: false, error: true, message: "Internal Server Error" },
       { status: 500 }
     );
